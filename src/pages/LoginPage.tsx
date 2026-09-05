@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, Mail, ArrowRight, CheckCircle, Database, Cpu, Activity, MapPin, Sparkles } from 'lucide-react';
+import { Shield, Lock, Mail, ArrowRight, CheckCircle, Database, Cpu, Activity, MapPin } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState('admin@mplads.ai');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -24,11 +24,6 @@ export const LoginPage: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleFillDemo = () => {
-    setEmail('admin@mplads.ai');
-    setPassword('admin123');
   };
 
   return (
@@ -173,25 +168,6 @@ export const LoginPage: React.FC = () => {
                 )}
               </button>
             </form>
-
-            {/* Quick Demo Autofill Pill */}
-            <div className="mt-5 p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs">
-              <div className="flex items-center justify-between text-slate-400 mb-1.5">
-                <span className="font-semibold text-[11px] text-slate-300">Demo Credentials</span>
-                <button
-                  type="button"
-                  onClick={handleFillDemo}
-                  className="text-cyan-400 hover:text-cyan-300 font-semibold text-[11px] flex items-center gap-1"
-                >
-                  <Sparkles className="w-3 h-3" />
-                  Auto-fill
-                </button>
-              </div>
-              <div className="font-mono text-[11px] text-slate-400 space-y-0.5">
-                <div>Email: <span className="text-slate-200">admin@mplads.ai</span></div>
-                <div>Password: <span className="text-slate-200">admin123</span></div>
-              </div>
-            </div>
           </div>
 
           <div className="mt-6 text-center">
